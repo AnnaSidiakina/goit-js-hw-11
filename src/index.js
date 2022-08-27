@@ -10,6 +10,7 @@ const refs = {
   imagesContainer: document.querySelector('.gallery'),
   infiniteScroll: document.querySelector('.more'),
   loadMoreBtn: document.querySelector('.load-more'),
+  mybutton: document.getElementById('myBtn'),
 };
 
 const observer = new IntersectionObserver(onLoadMore, {
@@ -19,6 +20,7 @@ const observer = new IntersectionObserver(onLoadMore, {
 });
 
 refs.searchForm.addEventListener('submit', onSearch);
+refs.mybutton.addEventListener('click', topFunction);
 // refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 let simplelightbox = null;
@@ -60,7 +62,6 @@ function onSearch(event) {
 }
 
 async function onLoadMore(data) {
-  //   console.log(data);
   if (data[0].isIntersecting) {
     if (fetchedAll) {
       Notify.info(
@@ -93,4 +94,23 @@ async function onLoadMore(data) {
 
 function clearImagesContainer() {
   refs.imagesContainer.innerHTML = '';
+}
+
+// On top button
+
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    refs.mybutton.style.display = 'block';
+  } else {
+    refs.mybutton.style.display = 'none';
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }

@@ -169,3 +169,26 @@ img:focus {
   fill: #212121;
   overflow: hidden;
 }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  text-align: center;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
+}
+
+#myBtn:hover {
+  background-color: #212121;
+  opacity: 0.8;
+}
